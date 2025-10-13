@@ -35,5 +35,6 @@ Set up needed environment
 ```
 Use build script from cloned llama.cpp 
 ```
-llama.cpp\examples\sycl\win-build-sycl.bat
+cd llama.cpp
+.\examples\sycl\win-build-sycl.bat
 ```
