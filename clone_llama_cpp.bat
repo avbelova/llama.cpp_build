@@ -2,12 +2,11 @@
 setlocal
 
 :: Set repo details
-set REPO_URL=https://github.com/ggerganov/llama.cpp.git
+set REPO_URL=https://github.com/ravi9/llama.cpp.git
 set REPO_DIR=llama.cpp
-set TAG=b5598
 
 echo ---------------------------------------
-echo Cloning and building llama.cpp @ %TAG%
+echo Cloning and building llama.cpp
 echo ---------------------------------------
 
 :: Clone the repo if it doesn't exist
@@ -21,13 +20,8 @@ if not exist "%REPO_DIR%" (
 :: Change to the directory
 cd %REPO_DIR%
 
-:: Fetch all tags
-echo Fetching tags...
-git fetch --all --tags
-
-:: Checkout the specific tag
-echo Checking out tag %TAG%...
-git checkout tags/%TAG% -b build-%TAG%
+:: Switching to dev_backend_openvino branch
+git switch dev_backend_openvino
 
 echo ---------------------------------------
 
