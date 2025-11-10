@@ -1,6 +1,17 @@
 @echo off
 setlocal enabledelayedexpansion
 
+set REPO_URL=https://github.com/ravi9/llama.cpp.git
+set REPO_DIR=llama.cpp
+
+:: Clone the repo if it doesn't exist
+if not exist "%REPO_DIR%" (
+    echo Cloning llama.cpp...
+    git clone %REPO_URL%
+) else (
+    echo llama.cpp already exists. Skipping clone.
+)
+
 :: Set versions and URLs
 set SDK_VERSION=1.3.283.0
 set W64DEVKIT_URL=https://github.com/skeeto/w64devkit/releases/download/v2.4.0/w64devkit-x64-2.4.0.7z.exe
@@ -45,11 +56,16 @@ echo Libs: -lvulkan-1
 echo Building llama.cpp with Vulkan...
 
 :: Change to llama.cpp directory
-cd llama.cpp
+cd %REPO_DIR%
+git switch dev_backend_openvino
 
 echo Run CMake build inside w64devkit
 cmake -B build_vulkan -DGGML_VULKAN=ON -DLLAMA_CURL=OFF
-cmake --build build_vulkan --config Release -j 8
+cmake --build build_vulkan --config Release -j %NUMBER_OF_PROCESSORS%
+
+echo ---------------------------------------
+echo Build complete for llama.cpp
+echo ---------------------------------------
 
 echo Done.
 pause
