@@ -1,21 +1,22 @@
 # llama.cpp_build
-Here you can find scripts and onstructions how to build llama.cpp with diferent backends: CPU, VULKAN, SYCL, OpenVINO.
+Here you can find scripts and instructions how to build llama.cpp with diferent backends: CPU, VULKAN, SYCL, OpenVINO.
 
 Usage instructions:
 ```
 git clone https://github.com/avbelova/llama.cpp_build.git
 cd llama.cpp_build
 ```
-Clone llama.cpp
-```
-clone_llama_cpp.bat
-Run the build process depending on the needed backend:
-```
 ## CPU
+### Windows
 ```
 build_cpu.bat
 ```
+### Linux
+```
+build_cpu.sh
+```
 ## GPU-VULKAN
+### Windows
 Install VULKAN SDK. The following script downloads VULKAN SDK installer and runs it. Please follow the installer steps manually.
 ```
 install_vulkan.bat
@@ -24,7 +25,13 @@ Build
 ```
 build_vulkan.bat
 ```
+### Linux
+```
+install_vulkan.sh
+build_vulkan.sh
+```
 ## GPU-SYCL
+### Windows
 Install Intel® oneAPI Base Toolkit manually or using the script:
 ```
 install_oneapi.bat
