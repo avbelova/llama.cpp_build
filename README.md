@@ -45,3 +45,12 @@ Use build script from cloned llama.cpp
 cd llama.cpp
 .\examples\sycl\win-build-sycl.bat
 ```
+## OpenVINO
+### Windows
+Prerequisites:
+MSVC (script is verified with MSVC 2022). 
+OpenVINO (for C++)
+Run the following script in MSVC Developer PowerShell:
+```
+build_openvino.ps1
+```
