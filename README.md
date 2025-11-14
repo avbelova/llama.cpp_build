@@ -48,9 +48,11 @@ cd llama.cpp
 ## OpenVINO
 ### Windows
 Prerequisites:
-MSVC (script is verified with MSVC 2022). 
-OpenVINO (for C++)
-Run the following script in MSVC Developer PowerShell:
+* MSVC (script is verified with MSVC 2022). 
+* OpenVINO (for C++)
+
+Execute the following commands in MSVC Developer PowerShell:
 ```
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 build_openvino.ps1
 ```
