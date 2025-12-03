@@ -2,23 +2,25 @@
 
 Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope Process -Force
 
-set REPO_URL=https://github.com/ravi9/llama.cpp.git
-set REPO_DIR=llama.cpp
-Set-Location "llama.cpp"
-$here = Get-Location
+$CURRENT_DIR = (Get-Location).Path
+$REPO_DIR = Join-Path $CURRENT_DIR "llama.cpp"
 
-if (-not (Test-Path $env:REPO_DIR)) {
+if (-not (Test-Path $REPO_DIR)) {
     Write-Host "Cloning llama.cpp..."
-    git clone $env:REPO_URL
+    git clone 'https://github.com/ravi9/llama.cpp.git'
+
 } else {
     Write-Host "llama.cpp already exists. Skipping clone."
 }
+
+Set-Location "llama.cpp"
+$here = Get-Location
 
 Write-Host "=== Setting up OpenVINO environment ==="
 Set-Location "C:\Program Files (x86)\Intel\openvino_2025.3.0\"
 .\setupvars.ps1
 
-Set-Location $here
+Set-Location $REPO_DIR
 
 Write-Host "=== Switching to branch dev_backend_openvino ==="
 git switch dev_backend_openvino
